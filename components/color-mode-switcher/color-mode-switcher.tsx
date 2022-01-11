@@ -17,6 +17,9 @@ export const ColorModeSwitcher = (
 
   return (
     <IconButton
+      pos="fixed"
+      top={3}
+      right={3}
       size="md"
       fontSize="lg"
       variant="ghost"
