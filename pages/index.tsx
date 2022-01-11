@@ -18,7 +18,7 @@ const Home: NextPage = () => {
         flexFlow="row wrap"
         justifyContent="center"
         rowGap={5}
-        textAlign={['center', null, null, 'left']}
+        textAlign="center"
       >
         <PageHeader text="Star Wars Navigation System" color="#ffe300" />
         <SearchInput value={searchQuery} onChange={setSearchQuery} />

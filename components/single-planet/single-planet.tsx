@@ -7,6 +7,7 @@ import {
 } from '@chakra-ui/react';
 import { convertNameFromSnakeCaseToNormalText } from '../../utils/helper';
 import { TPlanet } from '../../utils/types';
+import { TextEntry } from '../text-entry/text-entry';
 
 const selectedAttributes = [
   'climate',
@@ -32,19 +33,20 @@ export const SinglePlanet = ({ planet }: TSinglePlanetProps): JSX.Element => {
       p={8}
       bgColor={backgroundColor}
       w="100%"
-      maxW="620px"
+      maxW="520px"
       flexFlow="row wrap"
     >
       <Heading size="lg" w="100%" mb={3}>
-        Planet: {planet.name}
+        {planet.name}
       </Heading>
       {Object.keys(planet)
         .filter(key => selectedAttributes.includes(key))
         .map(key => (
-          <Text key={key} w="100%" textTransform="capitalize" mb={1}>
-            <strong>{`${convertNameFromSnakeCaseToNormalText(key)}: `}</strong>
-            {(planet as unknown as Record<string, string>)[key]}
-          </Text>
+          <TextEntry
+            key={key}
+            name={`${convertNameFromSnakeCaseToNormalText(key)}:`}
+            value={(planet as unknown as Record<string, string>)[key]}
+          />
         ))}
     </Flex>
   );

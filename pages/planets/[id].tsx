@@ -38,7 +38,7 @@ const Planet: NextPage = () => {
         flexFlow="row wrap"
         justifyContent="center"
         rowGap={5}
-        textAlign={['center', null, null, 'left']}
+        textAlign="center"
       >
         <PageHeader text="Star Wars Navigation System" color="#ffe300" />
         <SinglePlanet planet={planet?.data} />
