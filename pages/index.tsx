@@ -1,10 +1,9 @@
-import { Box, Center, Flex, Heading } from '@chakra-ui/react';
+import { Center, Flex } from '@chakra-ui/react';
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
 import { useState } from 'react';
 import { ColorModeSwitcher } from '../components/color-mode-switcher/color-mode-switcher';
 import { PageHeader } from '../components/page-header/page-header';
+import { PlanetList } from '../components/planet-list/planet-list';
 import { SearchInput } from '../components/search-input/search-input';
 
 const Home: NextPage = () => {
@@ -23,6 +22,7 @@ const Home: NextPage = () => {
       >
         <PageHeader text="Star Wars Navigation System" color="#ffe300" />
         <SearchInput value={searchQuery} onChange={setSearchQuery} />
+        <PlanetList />
       </Flex>
     </Center>
   );
