@@ -1,4 +1,5 @@
 import { SimpleGrid } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { PlanetsService } from '../../services/planets.service';
@@ -24,6 +25,7 @@ export const PlanetList = ({ searchQuery }: TPageListProps): JSX.Element => {
       refetchOnWindowFocus: false,
     },
   );
+  const router = useRouter();
 
   useEffect(() => {
     setNextPageUrl('');
@@ -31,6 +33,11 @@ export const PlanetList = ({ searchQuery }: TPageListProps): JSX.Element => {
 
   const onPaginationClick = (nextPage: boolean) => {
     setNextPageUrl(nextPage ? planets?.data.next : planets?.data.previous);
+  };
+
+  const onCardClick = (url: string) => {
+    const planetUrl = url.substring(url.indexOf('planets'));
+    router.push(planetUrl);
   };
 
   if (planetsLoading) {
@@ -44,8 +51,8 @@ export const PlanetList = ({ searchQuery }: TPageListProps): JSX.Element => {
   return (
     <>
       <SimpleGrid columns={[1, 1, 2, 3, 5]} gap={4} w="100%">
-        {planets?.data.results.map(({ name }: TPlanet) => (
-          <PlanetCard key={name} name={name} onClick={() => {}} />
+        {planets?.data.results.map(({ name, url }: TPlanet) => (
+          <PlanetCard key={name} name={name} onClick={() => onCardClick(url)} />
         ))}
       </SimpleGrid>
       <Pagination
