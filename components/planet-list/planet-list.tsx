@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { PlanetsService } from '../../services/planets.service';
-import { TPlanet } from '../../services/types';
+import { TPlanet } from '../../utils/types';
 import { Loader } from '../loader/loader';
 import { Pagination } from '../pagination/pagination';
 import { PlanetCard } from '../planet-card/planet-card';
