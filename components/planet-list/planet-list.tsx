@@ -1,8 +1,10 @@
+import { SimpleGrid } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { PlanetsService } from '../../services/planets.service';
 import { TPlanet } from '../../services/types';
 import { Loader } from '../loader/loader';
+import { PlanetCard } from '../planet-card/planet-card';
 
 export const PlanetList = () => {
   const [nextPageUrl, setNextPageUrl] = useState<string>('');
@@ -30,10 +32,10 @@ export const PlanetList = () => {
   }
 
   return (
-    <div>
-      {planets?.data.results.map((planet: TPlanet) => (
-        <p key={planet.name}>{planet.name}</p>
+    <SimpleGrid columns={[1, 1, 2, 3, 5]} gap={4} w="100%">
+      {planets?.data.results.map(({ name }: TPlanet) => (
+        <PlanetCard key={name} name={name} onClick={() => {}} />
       ))}
-    </div>
+    </SimpleGrid>
   );
 };
