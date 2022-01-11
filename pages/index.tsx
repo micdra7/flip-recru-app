@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       >
         <PageHeader text="Star Wars Navigation System" color="#ffe300" />
         <SearchInput value={searchQuery} onChange={setSearchQuery} />
-        <PlanetList />
+        <PlanetList searchQuery={searchQuery} />
       </Flex>
     </Center>
   );

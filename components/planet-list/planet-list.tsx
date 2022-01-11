@@ -1,5 +1,5 @@
 import { SimpleGrid } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { PlanetsService } from '../../services/planets.service';
 import { TPlanet } from '../../services/types';
@@ -7,19 +7,27 @@ import { Loader } from '../loader/loader';
 import { Pagination } from '../pagination/pagination';
 import { PlanetCard } from '../planet-card/planet-card';
 
-export const PlanetList = () => {
+type TPageListProps = {
+  searchQuery: string;
+};
+
+export const PlanetList = ({ searchQuery }: TPageListProps): JSX.Element => {
   const [nextPageUrl, setNextPageUrl] = useState<string>('');
   const {
     data: planets,
     isLoading: planetsLoading,
     isError: planetsError,
   } = useQuery(
-    ['planets', nextPageUrl],
-    () => PlanetsService.getPlanets(nextPageUrl),
+    ['planets', nextPageUrl, searchQuery],
+    () => PlanetsService.getPlanets(nextPageUrl, searchQuery),
     {
       refetchOnWindowFocus: false,
     },
   );
+
+  useEffect(() => {
+    setNextPageUrl('');
+  }, [searchQuery]);
 
   const onPaginationClick = (nextPage: boolean) => {
     setNextPageUrl(nextPage ? planets?.data.next : planets?.data.previous);
