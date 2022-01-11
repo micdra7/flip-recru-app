@@ -2,6 +2,7 @@ import { Center, Flex } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
+import { BackButton } from '../../components/back-button/back-button';
 import { ColorModeSwitcher } from '../../components/color-mode-switcher/color-mode-switcher';
 import { Loader } from '../../components/loader/loader';
 import { PageHeader } from '../../components/page-header/page-header';
@@ -32,6 +33,7 @@ const Planet: NextPage = () => {
   return (
     <Center w="100%" p={8}>
       <ColorModeSwitcher />
+      <BackButton />
       <Flex
         w="100%"
         maxW="1440px"
