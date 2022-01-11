@@ -1,5 +1,6 @@
 import { Center, Flex } from '@chakra-ui/react';
 import { NextPage } from 'next';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { BackButton } from '../../components/back-button/back-button';
@@ -32,6 +33,14 @@ const Planet: NextPage = () => {
 
   return (
     <Center w="100%" p={8}>
+      <Head>
+        <title>{planet?.data.name}</title>
+        <meta
+          name="description"
+          content={`Detailed information about planet ${planet?.data.name}`}
+        />
+      </Head>
+
       <ColorModeSwitcher />
       <BackButton />
       <Flex

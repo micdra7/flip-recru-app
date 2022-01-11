@@ -1,5 +1,6 @@
 import { Center, Flex } from '@chakra-ui/react';
 import type { NextPage } from 'next';
+import Head from 'next/head';
 import { useState } from 'react';
 import { ColorModeSwitcher } from '../components/color-mode-switcher/color-mode-switcher';
 import { PageHeader } from '../components/page-header/page-header';
@@ -11,6 +12,14 @@ const Home: NextPage = () => {
 
   return (
     <Center w="100%" p={8}>
+      <Head>
+        <title>Star Wars Navigation System</title>
+        <meta
+          name="description"
+          content="A navigation system allowing Stormtroopers to navigate between solar systems."
+        />
+      </Head>
+
       <ColorModeSwitcher />
       <Flex
         w="100%"
