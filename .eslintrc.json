@@ -1,3 +1,55 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "airbnb-typescript",
+    "next",
+    "prettier",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "prettier",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "import",
+    "@typescript-eslint"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      2,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "quotes": ["error", "single"],
+    "no-console": "warn",
+    "camelcase": "error",
+    "no-unused-vars": "warn",
+    "import/prefer-default-export": "off",
+    "react/state-in-constructor": 0,
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": 0,
+    "react/forbid-prop-types": [1, { "forbid": ["any", "array"] }],
+    "react/destructuring-assignment": [
+      0,
+      "always",
+      { "ignoreClassFields": true }
+    ]
+  }
 }
