@@ -1,4 +1,4 @@
-import { SimpleGrid } from '@chakra-ui/react';
+import { Heading, SimpleGrid } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
@@ -23,6 +23,7 @@ export const PlanetList = ({ searchQuery }: TPageListProps): JSX.Element => {
     () => PlanetsService.getPlanets(nextPageUrl, searchQuery),
     {
       refetchOnWindowFocus: false,
+      retry: 1,
     },
   );
   const router = useRouter();
@@ -45,7 +46,11 @@ export const PlanetList = ({ searchQuery }: TPageListProps): JSX.Element => {
   }
 
   if (planetsError) {
-    return <span>Could not load</span>;
+    return (
+      <Heading size="md" color="red.600">
+        Could not load planets
+      </Heading>
+    );
   }
 
   return (

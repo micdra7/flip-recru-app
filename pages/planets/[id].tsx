@@ -1,3 +1,4 @@
+import { Heading } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -18,7 +19,7 @@ const Planet: NextPage = () => {
   } = useQuery(
     `planets/${id}`,
     () => PlanetsService.getSinglePlanet(+(id ?? 0)),
-    { refetchOnWindowFocus: false, enabled: !!id },
+    { refetchOnWindowFocus: false, enabled: !!id, retry: 1 },
   );
 
   if (planetLoading) {
@@ -30,7 +31,13 @@ const Planet: NextPage = () => {
   }
 
   if (planetError) {
-    return <span>Could not load</span>;
+    return (
+      <Layout>
+        <Heading size="md" color="red.600">
+          Could not load planet
+        </Heading>
+      </Layout>
+    );
   }
 
   return (

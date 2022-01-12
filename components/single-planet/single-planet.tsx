@@ -31,9 +31,9 @@ export const SinglePlanet = ({ planet }: TSinglePlanetProps): JSX.Element => {
       flexFlow="row wrap"
     >
       <Heading size="lg" w="100%" mb={3}>
-        {planet.name}
+        {planet?.name}
       </Heading>
-      {Object.keys(planet)
+      {Object.keys(planet ?? {})
         .filter(key => selectedAttributes.includes(key))
         .map(key => (
           <TextEntry
