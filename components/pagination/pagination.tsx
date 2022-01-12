@@ -12,13 +12,13 @@ export const Pagination = ({
 }: TPaginationProps): JSX.Element => (
   <ButtonGroup variant="solid" spacing={2} w="100%" justifyContent="end">
     <IconButton
-      aria-label="Previous page"
+      aria-label="Go to previous page"
       icon={<Icon as={FaChevronLeft} />}
       onClick={onPreviousPageClick}
       disabled={!onPreviousPageClick}
     />
     <IconButton
-      aria-label="Next page"
+      aria-label="Go to next page"
       icon={<Icon as={FaChevronRight} />}
       onClick={onNextPageClick}
       disabled={!onNextPageClick}
