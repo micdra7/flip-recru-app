@@ -1,4 +1,4 @@
-import { Box, Center, Heading, useColorModeValue } from '@chakra-ui/react';
+import { Center, Heading, useColorModeValue } from '@chakra-ui/react';
 import { CSSObject } from '@emotion/react';
 
 type TPlanetCardProps = {

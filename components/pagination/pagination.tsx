@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Icon, IconButton } from '@chakra-ui/react';
+import { ButtonGroup, Icon, IconButton } from '@chakra-ui/react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 type TPaginationProps = {

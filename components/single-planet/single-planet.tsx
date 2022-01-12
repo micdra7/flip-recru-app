@@ -1,10 +1,4 @@
-import {
-  Center,
-  Flex,
-  Heading,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { Flex, Heading, useColorModeValue } from '@chakra-ui/react';
 import { convertNameFromSnakeCaseToNormalText } from '../../utils/helper';
 import { TPlanet } from '../../utils/types';
 import { TextEntry } from '../text-entry/text-entry';
