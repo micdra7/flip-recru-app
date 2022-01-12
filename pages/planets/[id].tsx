@@ -1,12 +1,10 @@
-import { Center, Flex } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { BackButton } from '../../components/back-button/back-button';
-import { ColorModeSwitcher } from '../../components/color-mode-switcher/color-mode-switcher';
+import { Layout } from '../../components/layout/layout';
 import { Loader } from '../../components/loader/loader';
-import { PageHeader } from '../../components/page-header/page-header';
 import { SinglePlanet } from '../../components/single-planet/single-planet';
 import { PlanetsService } from '../../services/planets.service';
 
@@ -24,7 +22,11 @@ const Planet: NextPage = () => {
   );
 
   if (planetLoading) {
-    return <Loader />;
+    return (
+      <Layout>
+        <Loader />
+      </Layout>
+    );
   }
 
   if (planetError) {
@@ -32,7 +34,7 @@ const Planet: NextPage = () => {
   }
 
   return (
-    <Center w="100%" p={8}>
+    <Layout>
       <Head>
         <title>{planet?.data.name}</title>
         <meta
@@ -41,20 +43,9 @@ const Planet: NextPage = () => {
         />
       </Head>
 
-      <ColorModeSwitcher />
       <BackButton />
-      <Flex
-        w="100%"
-        maxW="1440px"
-        flexFlow="row wrap"
-        justifyContent="center"
-        rowGap={5}
-        textAlign="center"
-      >
-        <PageHeader text="Star Wars Navigation System" color="#ffe300" />
-        <SinglePlanet planet={planet?.data} />
-      </Flex>
-    </Center>
+      <SinglePlanet planet={planet?.data} />
+    </Layout>
   );
 };
 
